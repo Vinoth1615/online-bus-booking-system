@@ -1,0 +1,80 @@
+<div class="seat-page container py-5">
+
+  <!-- Success Message -->
+  <div class="success-banner text-center py-5" *ngIf="bookingSuccess">
+    <div class="success-icon">🎉</div>
+    <h3>Booking Confirmed!</h3>
+    <p>Redirecting to your bookings...</p>
+  </div>
+
+  <div *ngIf="!bookingSuccess">
+    <h3 class="page-title mb-4">💺 Select Your Seat</h3>
+
+    <!-- Schedule Info -->
+    <div class="schedule-info card p-4 mb-4" *ngIf="schedule">
+      <div class="row">
+        <div class="col-md-4">
+          <strong>🚌 {{ schedule.bus?.busName }}</strong>
+          <div class="text-muted">{{ schedule.bus?.busNumber }}</div>
+        </div>
+        <div class="col-md-4 text-center">
+          <strong>{{ schedule.route?.origin }} → {{ schedule.route?.destination }}</strong>
+          <div class="text-muted">{{ schedule.departureTime | date:'dd MMM, HH:mm' }}</div>
+        </div>
+        <div class="col-md-4 text-end">
+          <strong class="price">₹{{ schedule.price }}</strong>
+          <div class="text-muted">per seat</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend d-flex gap-4 mb-4">
+      <div class="d-flex align-items-center gap-2">
+        <div class="seat-demo available"></div><span>Available</span>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <div class="seat-demo selected"></div><span>Selected</span>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <div class="seat-demo booked"></div><span>Booked</span>
+      </div>
+    </div>
+
+    <!-- Seat Grid -->
+    <div class="bus-layout card p-4 mb-4">
+      <div class="steering mb-4 text-center">🚗 Driver</div>
+      <div class="seats-grid">
+        <div class="seat"
+             *ngFor="let seat of seats"
+             [class.available]="seat.available"
+             [class.booked]="!seat.available"
+             [class.selected]="selectedSeat?.id === seat.id"
+             (click)="selectSeat(seat)">
+          {{ seat.seatNumber }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+    <!-- Booking Summary -->
+    <div class="booking-summary card p-4" *ngIf="selectedSeat">
+      <h6 class="mb-3">📋 Booking Summary</h6>
+      <div class="d-flex justify-content-between mb-2">
+        <span>Selected Seat</span>
+        <strong>{{ selectedSeat.seatNumber }}</strong>
+      </div>
+      <div class="d-flex justify-content-between mb-3">
+        <span>Total Amount</span>
+        <strong class="price">₹{{ schedule?.price }}</strong>
+      </div>
+      <button class="btn btn-confirm w-100"
+              (click)="confirmBooking()"
+              [disabled]="loading">
+        {{ loading ? 'Confirming...' : '✅ Confirm Booking' }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+.register-wrapper {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f0f4f8, #e8ecf0);
+  padding: 20px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 440px;
+  border-radius: 20px !important;
+}
+
+.logo {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-weight: 700;
+  color: #333;
+}
+
+.login-link {
+  color: #667eea;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,144 @@
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+  top: -200px;
+  right: -100px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-content h1 span {
+  color: #ffe082;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.btn-hero {
+  background: #ffe082;
+  color: #333;
+  font-weight: 700;
+  padding: 14px 40px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.btn-hero:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  background: white;
+}
+
+/* Features */
+.features {
+  background: white;
+}
+
+.features h2 {
+  font-weight: 700;
+  color: #333;
+}
+
+.feature-card {
+  transition: transform 0.3s;
+  height: 100%;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+}
+
+.feature-card .icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card h5 {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Routes */
+.popular-routes {
+  background: #f0f4f8;
+}
+
+.popular-routes h2 {
+  font-weight: 700;
+}
+
+.route-card {
+  transition: transform 0.3s;
+}
+
+.route-card:hover {
+  transform: translateY(-5px);
+}
+
+.origin, .destination {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.arrow {
+  font-size: 1.5rem;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.price {
+  font-weight: 700;
+  color: #667eea;
+  font-size: 1rem;
+}
+
+.btn-book {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+}
+
+.btn-book:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* CTA */
+.cta {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.cta h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}

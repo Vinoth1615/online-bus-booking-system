@@ -1,0 +1,77 @@
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container text-center">
+    <div class="hero-content">
+      <h1>🚌 Travel Smarter with <span>BusGo</span></h1>
+      <p>Book bus tickets instantly. Choose your seat. Travel comfortably.</p>
+      <a routerLink="/search" class="btn btn-hero">Search Buses Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Why Choose BusGo?</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-card card p-4 text-center">
+          <div class="icon">🎯</div>
+          <h5>Easy Booking</h5>
+          <p>Search routes, pick your seat and confirm your booking in under 2 minutes.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card card p-4 text-center">
+          <div class="icon">🔒</div>
+          <h5>Secure Payments</h5>
+          <p>Your data is protected with JWT authentication and encrypted connections.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card card p-4 text-center">
+          <div class="icon">📱</div>
+          <h5>Live Seat Selection</h5>
+          <p>See available seats in real time and pick exactly where you want to sit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Routes Section -->
+<section class="popular-routes py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Popular Routes</h2>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let route of popularRoutes">
+        <div class="route-card card p-4">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <h6 class="origin">{{ route.from }}</h6>
+              <small class="text-muted">{{ route.duration }}</small>
+            </div>
+            <div class="arrow">→</div>
+            <div class="text-end">
+              <h6 class="destination">{{ route.to }}</h6>
+              <small class="text-muted">{{ route.distance }}</small>
+            </div>
+          </div>
+          <div class="mt-3 d-flex justify-content-between align-items-center">
+            <span class="price">From ₹{{ route.price }}</span>
+            <a routerLink="/search" class="btn btn-sm btn-book">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta text-center py-5">
+  <div class="container">
+    <h2>Ready to hit the road?</h2>
+    <p>Join thousands of happy travellers using BusGo every day.</p>
+    <a routerLink="/register" class="btn btn-hero mt-3">Get Started Free</a>
+  </div>
+</section>

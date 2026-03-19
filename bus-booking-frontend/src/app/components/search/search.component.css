@@ -1,0 +1,116 @@
+.search-header {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 50px 0 80px;
+  color: white;
+}
+
+.search-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.search-box {
+  border-radius: 20px !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2) !important;
+}
+
+.btn-search {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-weight: 600;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.btn-search:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+  color: white;
+}
+
+.results-title {
+  color: #555;
+}
+
+.schedule-card {
+  border-radius: 16px !important;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.schedule-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12) !important;
+}
+
+.bus-type-badge {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.bus-info h6 {
+  font-weight: 600;
+  color: #333;
+}
+
+.time {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.duration-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  margin-top: 4px;
+  border-radius: 2px;
+}
+
+.seats-count {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #28a745;
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.btn-book {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-book:hover {
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}

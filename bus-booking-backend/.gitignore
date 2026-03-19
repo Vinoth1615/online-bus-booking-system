@@ -1,0 +1,20 @@
+# Maven
+target/
+*.class
+*.jar
+*.war
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.classpath
+*.project
+*.settings/
+
+# Sensitive config (IMPORTANT!)
+application-secret.properties
+
+# OS files
+.DS_Store
+Thumbs.db

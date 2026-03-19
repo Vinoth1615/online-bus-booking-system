@@ -1,0 +1,105 @@
+<div class="search-page">
+
+  <!-- Search Header -->
+  <div class="search-header">
+    <div class="container">
+      <h2>🔍 Find Your Bus</h2>
+      <p>Search from 500+ routes across India</p>
+
+      <div class="search-box card p-4 mt-4">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-4">
+            <label class="form-label">From</label>
+            <select class="form-control" [(ngModel)]="searchData.origin">
+              <option value="">Select Origin</option>
+              <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">To</label>
+            <select class="form-control" [(ngModel)]="searchData.destination">
+              <option value="">Select Destination</option>
+              <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-search w-100" (click)="onSearch()" [disabled]="loading">
+              {{ loading ? 'Searching...' : '🔍 Search Buses' }}
+            </button>
+          </div>
+        </div>
+
+        <div class="alert alert-danger mt-3 mb-0" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="container py-5">
+
+    <!-- No Results -->
+    <div class="text-center py-5" *ngIf="searched && schedules.length === 0">
+      <div class="empty-icon">🚌</div>
+      <h4>No buses found</h4>
+      <p class="text-muted">Try a different route or date</p>
+    </div>
+
+    <!-- Schedule Cards -->
+    <div *ngIf="schedules.length > 0">
+      <h5 class="mb-4 results-title">
+        {{ schedules.length }} bus(es) found from
+        <strong>{{ searchData.origin }}</strong> to
+        <strong>{{ searchData.destination }}</strong>
+      </h5>
+
+      <div class="schedule-card card mb-4 p-4"
+           *ngFor="let schedule of schedules">
+        <div class="row align-items-center">
+          <div class="col-md-3">
+            <div class="bus-info">
+              <span class="bus-type-badge">{{ schedule.bus.busType }}</span>
+              <h6 class="mt-2 mb-0">{{ schedule.bus.busName }}</h6>
+              <small class="text-muted">{{ schedule.bus.busNumber }}</small>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="timing d-flex align-items-center gap-3">
+              <div class="text-center">
+                <div class="time">{{ schedule.departureTime | date:'HH:mm' }}</div>
+                <small class="text-muted">{{ schedule.route.origin }}</small>
+              </div>
+              <div class="duration-line">
+                <span>{{ schedule.route.durationHours }}h</span>
+                <div class="line"></div>
+              </div>
+              <div class="text-center">
+                <div class="time">{{ schedule.arrivalTime | date:'HH:mm' }}</div>
+                <small class="text-muted">{{ schedule.route.destination }}</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2 text-center">
+            <div class="seats-info">
+              <span class="seats-count">{{ schedule.availableSeats }}</span>
+              <small class="d-block text-muted">seats left</small>
+            </div>
+          </div>
+
+          <div class="col-md-3 text-end">
+            <div class="price">₹{{ schedule.price }}</div>
+            <button class="btn btn-book mt-2"
+                    (click)="selectSchedule(schedule.id)"
+                    [disabled]="schedule.availableSeats === 0">
+              {{ schedule.availableSeats === 0 ? 'Sold Out' : 'Select Seats →' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
