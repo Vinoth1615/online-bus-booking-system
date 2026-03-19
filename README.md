@@ -142,7 +142,7 @@ docker-compose up --build
 
 ## 👨‍💻 Author
 
-**Your Name**
+Vinoth Kumar D
 - GitHub: (https://github.com/Vinoth1615)
 - LinkedIn: (https://linkedin.com/in/vinothkumardeva)
 
