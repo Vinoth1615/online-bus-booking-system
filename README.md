@@ -69,7 +69,7 @@ online-bus-booking-system/
 ### Backend Setup
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/online-bus-booking-system.git
+git clone https://github.com/Vinoth1615/online-bus-booking-system.git
 
 # Navigate to backend
 cd bus-booking-backend
