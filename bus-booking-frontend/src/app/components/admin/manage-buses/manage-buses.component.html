@@ -1,1 +1,96 @@
-<p>manage-buses works!</p>
+<div class="manage-page">
+  <div class="page-header">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>
+        <h2>🚌 Manage Buses</h2>
+        <p>Add and manage your bus fleet</p>
+      </div>
+      <div class="d-flex gap-3">
+        <a routerLink="/admin/dashboard" class="btn btn-back">← Dashboard</a>
+        <button class="btn btn-add" (click)="showForm = !showForm">
+          {{ showForm ? '✕ Cancel' : '+ Add New Bus' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5">
+
+    <!-- Success Message -->
+    <div class="alert alert-success" *ngIf="successMessage">
+      ✅ {{ successMessage }}
+    </div>
+
+    <!-- Add Bus Form -->
+    <div class="card p-4 mb-5 form-card" *ngIf="showForm">
+      <h5 class="mb-4">Add New Bus</h5>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Bus Number</label>
+          <input type="text" class="form-control"
+                 placeholder="TN01AB1234"
+                 [(ngModel)]="newBus.busNumber" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Bus Name</label>
+          <input type="text" class="form-control"
+                 placeholder="Chennai Express"
+                 [(ngModel)]="newBus.busName" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Total Seats</label>
+          <input type="number" class="form-control"
+                 [(ngModel)]="newBus.totalSeats" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Bus Type</label>
+          <select class="form-control" [(ngModel)]="newBus.busType">
+            <option value="AC">AC</option>
+            <option value="NON_AC">NON AC</option>
+            <option value="SLEEPER">Sleeper</option>
+          </select>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-add" (click)="addBus()">
+            ✅ Add Bus
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buses Table -->
+    <div class="card">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Bus Number</th>
+              <th>Bus Name</th>
+              <th>Total Seats</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="loading">
+              <td colspan="5" class="text-center py-4">
+                <div class="spinner-border spinner-border-sm text-primary"></div>
+                Loading buses...
+              </td>
+            </tr>
+            <tr *ngFor="let bus of buses">
+              <td>{{ bus.id }}</td>
+              <td><strong>{{ bus.busNumber }}</strong></td>
+              <td>{{ bus.busName }}</td>
+              <td>{{ bus.totalSeats }}</td>
+              <td>
+                <span class="type-badge">{{ bus.busType }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

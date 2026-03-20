@@ -13,33 +13,56 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/search">Search Buses</a>
-        </li>
 
-        <ng-container *ngIf="authService.isLoggedIn(); else guestLinks">
+        <!-- PASSENGER links -->
+        <ng-container *ngIf="authService.isLoggedIn() && !authService.isAdmin()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/search">Search Buses</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/my-bookings">My Bookings</a>
           </li>
-          <li class="nav-item" *ngIf="authService.isAdmin()">
-            <a class="nav-link" routerLink="/admin/dashboard">Admin</a>
+        </ng-container>
+
+        <!-- ADMIN links -->
+        <ng-container *ngIf="authService.isLoggedIn() && authService.isAdmin()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/dashboard">Dashboard</a>
           </li>
           <li class="nav-item">
-            <span class="nav-link user-name">👤 {{ authService.getName() }}</span>
+            <a class="nav-link" routerLink="/admin/buses">Manage Buses</a>
           </li>
           <li class="nav-item">
-            <button class="btn btn-logout" (click)="logout()">Logout</button>
+            <a class="nav-link" routerLink="/admin/routes">Manage Routes</a>
           </li>
         </ng-container>
 
-        <ng-template #guestLinks>
+        <!-- Guest links -->
+        <ng-container *ngIf="!authService.isLoggedIn()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/search">Search Buses</a>
+          </li>
           <li class="nav-item">
             <a class="btn btn-login" routerLink="/login">Login</a>
           </li>
           <li class="nav-item">
             <a class="btn btn-register" routerLink="/register">Register</a>
           </li>
-        </ng-template>
+        </ng-container>
+
+        <!-- Logged in user info -->
+        <ng-container *ngIf="authService.isLoggedIn()">
+          <li class="nav-item">
+            <span class="nav-link user-name">
+              {{ authService.isAdmin() ? '👨‍💼' : '👤' }}
+              {{ authService.getName() }}
+            </span>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-logout" (click)="logout()">Logout</button>
+          </li>
+        </ng-container>
+
       </ul>
     </div>
   </div>

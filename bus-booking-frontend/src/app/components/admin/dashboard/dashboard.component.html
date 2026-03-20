@@ -1,1 +1,134 @@
-<p>dashboard works!</p>
+<div class="dashboard-page">
+
+  <!-- Header -->
+  <div class="dashboard-header">
+    <div class="container">
+      <h2>👨‍💼 Admin Dashboard</h2>
+      <p>Manage your bus booking platform</p>
+    </div>
+  </div>
+
+  <div class="container py-5">
+
+    <!-- Stats Cards -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-3">
+        <div class="stat-card card p-4 text-center">
+          <div class="stat-icon">🚌</div>
+          <div class="stat-number">{{ stats.totalBuses }}</div>
+          <div class="stat-label">Total Buses</div>
+          <a routerLink="/admin/buses" class="btn btn-sm btn-manage mt-3">Manage</a>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="stat-card card p-4 text-center">
+          <div class="stat-icon">🗺️</div>
+          <div class="stat-number">{{ stats.totalRoutes }}</div>
+          <div class="stat-label">Total Routes</div>
+          <a routerLink="/admin/routes" class="btn btn-sm btn-manage mt-3">Manage</a>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="stat-card card p-4 text-center">
+          <div class="stat-icon">📅</div>
+          <div class="stat-number">{{ stats.totalSchedules }}</div>
+          <div class="stat-label">Schedules</div>
+          <a routerLink="/search" class="btn btn-sm btn-manage mt-3">View</a>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="stat-card card p-4 text-center">
+          <div class="stat-icon">🎟️</div>
+          <div class="stat-number">{{ stats.totalBookings }}</div>
+          <div class="stat-label">Bookings</div>
+          <a routerLink="/my-bookings" class="btn btn-sm btn-manage mt-3">View</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row g-4 mb-5">
+      <div class="col-12">
+        <h5 class="section-title">⚡ Quick Actions</h5>
+      </div>
+      <div class="col-md-4">
+        <div class="action-card card p-4">
+          <h6>🚌 Add New Bus</h6>
+          <p class="text-muted">Register a new bus to the fleet</p>
+          <a routerLink="/admin/buses" class="btn btn-action w-100">Go to Buses</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="action-card card p-4">
+          <h6>🗺️ Add New Route</h6>
+          <p class="text-muted">Create a new travel route</p>
+          <a routerLink="/admin/routes" class="btn btn-action w-100">Go to Routes</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="action-card card p-4">
+          <h6>🔍 View Schedules</h6>
+          <p class="text-muted">See all available schedules</p>
+          <a routerLink="/search" class="btn btn-action w-100">View Schedules</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Bookings -->
+    <div class="row">
+      <div class="col-12">
+        <h5 class="section-title mb-4">🎟️ Recent Bookings</h5>
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Route</th>
+                  <th>Bus</th>
+                  <th>Seat</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="loading">
+                  <td colspan="6" class="text-center py-4">
+                    <div class="spinner-border spinner-border-sm text-primary"></div>
+                    Loading...
+                  </td>
+                </tr>
+                <tr *ngIf="!loading && recentBookings.length === 0">
+                  <td colspan="6" class="text-center py-4 text-muted">
+                    No bookings yet
+                  </td>
+                </tr>
+                <tr *ngFor="let booking of recentBookings">
+                  <td><strong>#{{ booking.id }}</strong></td>
+                  <td>{{ booking.schedule?.route?.origin }} → {{ booking.schedule?.route?.destination }}</td>
+                  <td>{{ booking.schedule?.bus?.busName }}</td>
+                  <td>
+                    <span class="seat-badge">{{ booking.seat?.seatNumber }}</span>
+                  </td>
+                  <td><strong>₹{{ booking.totalPrice }}</strong></td>
+                  <td>
+                    <span class="status-badge"
+                      [class.confirmed]="booking.status === 'CONFIRMED'"
+                      [class.cancelled]="booking.status === 'CANCELLED'"
+                      [class.pending]="booking.status === 'PENDING'">
+                      {{ booking.status }}
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

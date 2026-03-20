@@ -1,0 +1,68 @@
+.page-header {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 40px 0;
+  color: white;
+}
+
+.page-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.btn-back {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-back:hover {
+  background: white;
+  color: #667eea;
+}
+
+.btn-add {
+  background: #ffe082;
+  border: none;
+  color: #333;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-add:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.form-card {
+  border-left: 4px solid #667eea !important;
+}
+
+.table thead th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #555;
+  border: none;
+  padding: 15px;
+}
+
+.table tbody td {
+  padding: 15px;
+  vertical-align: middle;
+  border-color: #f0f0f0;
+}
+
+.type-badge {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}

@@ -1,0 +1,127 @@
+.dashboard-header {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 40px 0;
+  color: white;
+}
+
+.dashboard-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.stat-card {
+  border-radius: 16px !important;
+  transition: transform 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.stat-label {
+  color: #999;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.btn-manage {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white !important;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 20px;
+  font-weight: 500;
+}
+
+.section-title {
+  font-weight: 700;
+  color: #333;
+}
+
+.action-card {
+  border-radius: 16px !important;
+  transition: transform 0.3s;
+  height: 100%;
+}
+
+.action-card:hover {
+  transform: translateY(-4px);
+}
+
+.action-card h6 {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.btn-action {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-action:hover {
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+}
+
+.table thead th {
+  background: #f8f9fa;
+  font-weight: 600;
+  color: #555;
+  border: none;
+  padding: 15px;
+}
+
+.table tbody td {
+  padding: 15px;
+  vertical-align: middle;
+  border-color: #f0f0f0;
+}
+
+.seat-badge {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.status-badge.confirmed {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-badge.cancelled {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.status-badge.pending {
+  background: #fff3e0;
+  color: #e65100;
+}

@@ -1,1 +1,91 @@
-<p>manage-routes works!</p>
+
+<div class="manage-page">
+  <div class="page-header">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div>
+        <h2>🗺️ Manage Routes</h2>
+        <p>Add and manage travel routes</p>
+      </div>
+      <div class="d-flex gap-3">
+        <a routerLink="/admin/dashboard" class="btn btn-back">← Dashboard</a>
+        <button class="btn btn-add" (click)="showForm = !showForm">
+          {{ showForm ? '✕ Cancel' : '+ Add New Route' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5">
+
+    <div class="alert alert-success" *ngIf="successMessage">
+      ✅ {{ successMessage }}
+    </div>
+
+    <!-- Add Route Form -->
+    <div class="card p-4 mb-5 form-card" *ngIf="showForm">
+      <h5 class="mb-4">Add New Route</h5>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Origin City</label>
+          <input type="text" class="form-control"
+                 placeholder="Chennai"
+                 [(ngModel)]="newRoute.origin" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Destination City</label>
+          <input type="text" class="form-control"
+                 placeholder="Bangalore"
+                 [(ngModel)]="newRoute.destination" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Distance (km)</label>
+          <input type="number" class="form-control"
+                 [(ngModel)]="newRoute.distanceKm" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Duration (hours)</label>
+          <input type="number" class="form-control"
+                 [(ngModel)]="newRoute.durationHours" />
+        </div>
+        <div class="col-12">
+          <button class="btn btn-add" (click)="addRoute()">
+            ✅ Add Route
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Routes Table -->
+    <div class="card">
+      <div class="table-responsive">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Origin</th>
+              <th>Destination</th>
+              <th>Distance</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="loading">
+              <td colspan="5" class="text-center py-4">
+                <div class="spinner-border spinner-border-sm text-primary"></div>
+                Loading routes...
+              </td>
+            </tr>
+            <tr *ngFor="let route of routes">
+              <td>{{ route.id }}</td>
+              <td><strong>{{ route.origin }}</strong></td>
+              <td><strong>{{ route.destination }}</strong></td>
+              <td>{{ route.distanceKm }} km</td>
+              <td>{{ route.durationHours }} hrs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
