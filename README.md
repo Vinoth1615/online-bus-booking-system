@@ -5,7 +5,6 @@
 ![Angular](https://img.shields.io/badge/Angular-19-red?style=for-the-badge&logo=angular)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?style=for-the-badge&logo=mysql)
 ![JWT](https://img.shields.io/badge/JWT-Auth-black?style=for-the-badge&logo=jsonwebtokens)
-![Docker](https://img.shields.io/badge/Docker-Ready-blue?style=for-the-badge&logo=docker)
 
 A full-stack online bus booking platform where passengers can search
 routes, select seats and confirm bookings — all through a clean,
